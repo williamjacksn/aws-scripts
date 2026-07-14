@@ -13,5 +13,5 @@ ENV PATH="/home/python/venv/bin:${PATH}" \
     PYTHONUNBUFFERED="1" \
     TZ="Etc/UTC"
 
-LABEL org.opencontainers.image.authors="William Jackson <wjackson@informatica.com>" \
-      org.opencontainers.image.source="https://bitb.informatica.com/projects/TS/repos/aws-scripts"
+LABEL org.opencontainers.image.authors="William Jackson <william@subtlecoolness.com>" \
+      org.opencontainers.image.source="https://github.com/williamjacksn/aws-scripts"

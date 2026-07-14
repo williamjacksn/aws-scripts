@@ -3,7 +3,7 @@ services:
     build: .
     entrypoint:
       - /bin/sh
-    image: 368099029718.dkr.ecr.us-west-2.amazonaws.com/aws-scripts
+    image: ghcr.io/williamjacksn/aws-scripts
     init: true
     volumes:
       - ./:/home/python/aws-scripts
