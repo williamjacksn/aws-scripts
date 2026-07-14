@@ -1,14 +1,13 @@
-FROM python:3.12.0-alpine3.17
+FROM ghcr.io/astral-sh/uv:0.11.25-trixie-slim
 
-RUN /usr/sbin/adduser -g python -D python
-
+RUN /usr/sbin/useradd --create-home --shell /bin/bash --user-group python
 USER python
-RUN /usr/local/bin/python -m venv /home/python/venv
 
-COPY --chown=python:python requirements.txt /home/python/aws-scripts/requirements.txt
-RUN /home/python/venv/bin/pip install --no-cache-dir --requirement /home/python/aws-scripts/requirements.txt
+WORKDIR /app
+COPY --chown=python:python .python-version pyproject.toml uv.lock ./
+RUN /usr/local/bin/uv sync --frozen
 
-ENV PATH="/home/python/venv/bin:${PATH}" \
+ENV PATH="/app/.venv/bin:${PATH}" \
     PYTHONDONTWRITEBYTECODE="1" \
     PYTHONUNBUFFERED="1" \
     TZ="Etc/UTC"
